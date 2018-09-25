@@ -17,7 +17,7 @@ def build_page(textarea_content):
     submit_label = "<label> Now click submit and watch the action </label>"
     submit = "<input type='submit' name='mess' />"
 
-    form = ("<form method='post' action'/'>")+
+    form = ("<form method='post' action='/'>" +
             rot_label + rotation_input + "<br><br>" +
             message_label + textarea + "<br><br>" +
             submit_label + submit +
