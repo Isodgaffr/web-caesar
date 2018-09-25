@@ -1,25 +1,39 @@
-def encrypt(text, rot)
-    new_text = ''
-    up_alpha = 'ABCDEFGHIJKLMNOPQRSTUVWUXYZ'
-    low_aplha = 'abcdefghijklmnopqrstuvwxyz'
+def alphabet_position(character):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    lower = character.lower()
+    return alphabet.index(lower)
+
+def rotate_string_13(text):
+
+    rotated = ''
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
     for char in text:
-        if char is.alpha():
-            if char is.upper():
-                position = up_alpha.index(char)
-                new_text += up_alpha[position + (rot % 26)]
-            elif char is.lower():
-                position = low_aplha.index(char)
-                new_text += low_aplha[position + (rot % 26)]
-        elif char == ' ':
-            new_text += ' '
+        rotated_idx = (alphabet_position(char) + 13) % 26
+        if char.isupper():
+            rotated = rotated + alphabet[rotated_idx].upper()
         else:
-            new_text += char
-    return new_text
+            rotated = rotated + alphabet[rotated_idx]
 
-def main():
-    text = input("Type a message:")
-    rot = input("Rotate by:")
-    print(encrypt(text, rot))
+    return rotated
 
-if __name__ == "__main__":
-    main()
+def rotate_character(char, rot):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    rotated_idx = (alphabet_position(char) + rot) % 26
+
+    if char.isupper():
+        return alphabet[rotated_idx].upper()
+    else:
+        return alphabet[rotated_idx]
+
+def rotate_string(text, rot):
+
+    rotated = ''
+
+    for char in text:
+        if (char.isalpha()):
+            rotated = rotated + rotate_character(char, rot)
+        else:
+            rotated = rotated + char
+
+    return rotated
